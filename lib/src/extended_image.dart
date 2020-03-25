@@ -71,6 +71,7 @@ class ExtendedImage extends StatefulWidget {
     this.width,
     this.height,
     this.color,
+        this.loadFaild,
     this.colorBlendMode,
     this.fit,
     this.alignment = Alignment.center,
@@ -474,6 +475,7 @@ class ExtendedImage extends StatefulWidget {
   ///but network image is true
   ///better to set it's true when your image is big and take some time to ready
   final bool enableLoadState;
+  Function() loadFaild;
 
   /// {@macro flutter.clipper.clipBehavior}
   final Clip clipBehavior;
@@ -736,6 +738,7 @@ class _ExtendedImageState extends State<ExtendedImage>
   }
 
   _loadFailed(dynamic exception, StackTrace stackTrace) {
+    widget.loadFaild();
     //print("$exception");
 
 //    ImageProvider imageProvider = widget.image;
